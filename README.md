@@ -1,3 +1,8 @@
+# 项目名称
+
+[Chinese](README_zh.md) | 中文
+
+
 # RSS Podcast Downloader
 
 A simple Python script for downloading podcast audio files from RSS feeds.
