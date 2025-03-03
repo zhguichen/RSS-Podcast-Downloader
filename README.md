@@ -1,4 +1,3 @@
-# 项目名称
 
 [Chinese](README_zh.md) | 中文
 
