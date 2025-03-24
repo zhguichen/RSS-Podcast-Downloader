@@ -21,7 +21,11 @@ def sanitize_filename(filename):
 def download_file(url, output_path):
     """Download file with progress bar"""
     try:
-        response = requests.get(url, stream=True)
+        # 添加超时设置和请求头
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        }
+        response = requests.get(url, stream=True, headers=headers, timeout=30)
         response.raise_for_status()  # Ensure request was successful
         
         # Get file size (if provided by server)
@@ -40,8 +44,20 @@ def download_file(url, output_path):
                     f.write(chunk)
                     bar.update(len(chunk))
         return True
+    except KeyboardInterrupt:
+        print("\n下载被用户中断")
+        # 删除部分下载的文件
+        if os.path.exists(output_path):
+            os.remove(output_path)
+        raise  # 重新抛出KeyboardInterrupt异常以便主程序可以处理它
+    except requests.exceptions.Timeout:
+        print(f"\n下载超时: {url}")
+        # 删除部分下载的文件
+        if os.path.exists(output_path):
+            os.remove(output_path)
+        return False
     except Exception as e:
-        print(f"Download failed: {e}")
+        print(f"\n下载失败: {e}")
         # Remove partially downloaded file if download fails
         if os.path.exists(output_path):
             os.remove(output_path)
@@ -240,15 +256,20 @@ def main():
     parser.add_argument('-o', '--output-dir', default='downloads', help='Output directory (default: downloads)')
     parser.add_argument('-l', '--limit', type=int, help='Limit number of episodes to download')
     parser.add_argument('--no-skip', action='store_true', help='Do not skip existing files')
+    parser.add_argument('--timeout', type=int, default=30, help='Download timeout in seconds (default: 30)')
     
     args = parser.parse_args()
     
-    parse_rss_feed(
-        args.feed_url, 
-        args.output_dir, 
-        limit=args.limit, 
-        skip_existing=not args.no_skip
-    )
+    try:
+        parse_rss_feed(
+            args.feed_url, 
+            args.output_dir, 
+            limit=args.limit, 
+            skip_existing=not args.no_skip
+        )
+    except KeyboardInterrupt:
+        print("\n程序被用户中断，正在退出...")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main() 
