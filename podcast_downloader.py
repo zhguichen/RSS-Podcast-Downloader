@@ -123,14 +123,10 @@ def save_description(entry, output_path):
 
 
 def create_subdirectories(base_dir):
-    """Create audio and description subdirectories"""
-    audio_dir = os.path.join(base_dir, "audio")
-    desc_dir = os.path.join(base_dir, "description")
-
-    os.makedirs(audio_dir, exist_ok=True)
-    os.makedirs(desc_dir, exist_ok=True)
-
-    return audio_dir, desc_dir
+    """Create episode subdirectories"""
+    episode_dir = os.path.join(base_dir, "episodes")
+    os.makedirs(episode_dir, exist_ok=True)
+    return episode_dir
 
 
 def is_episode_downloaded(audio_path, desc_path, entry):
@@ -176,8 +172,8 @@ def parse_rss_feed(feed_url, output_dir, limit=None, skip_existing=True):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    # Create audio and description subdirectories
-    audio_dir, desc_dir = create_subdirectories(output_dir)
+    # Create episodes directory
+    episodes_dir = create_subdirectories(output_dir)
 
     # Parse RSS feed
     feed = feedparser.parse(feed_url)
@@ -206,7 +202,7 @@ def parse_rss_feed(feed_url, output_dir, limit=None, skip_existing=True):
     }
 
     # Save podcast info to JSON file
-    podcast_info_path = os.path.join(desc_dir, "podcast_info.json")
+    podcast_info_path = os.path.join(output_dir, "podcast_info.json")
     with open(podcast_info_path, "w", encoding="utf-8") as f:
         json.dump(podcast_info, f, ensure_ascii=False, indent=2)
     print(f"Saved podcast information to {podcast_info_path}")
@@ -246,13 +242,17 @@ def parse_rss_feed(feed_url, output_dir, limit=None, skip_existing=True):
         # Create base filename (without extension)
         base_filename = sanitize_filename(f"{title}")
 
+        # Create episode directory
+        episode_dir = os.path.join(episodes_dir, base_filename)
+        os.makedirs(episode_dir, exist_ok=True)
+
         # Create audio filename
-        audio_filename = f"{base_filename}{extension}"
-        audio_path = os.path.join(audio_dir, audio_filename)
+        audio_filename = f"audio{extension}"
+        audio_path = os.path.join(episode_dir, audio_filename)
 
         # Create description filename
-        desc_filename = f"{base_filename}.json"
-        desc_path = os.path.join(desc_dir, desc_filename)
+        desc_filename = "info.json"
+        desc_path = os.path.join(episode_dir, desc_filename)
 
         # Check if episode already exists
         if skip_existing and is_episode_downloaded(audio_path, desc_path, entry):
@@ -271,11 +271,15 @@ def parse_rss_feed(feed_url, output_dir, limit=None, skip_existing=True):
 
         if audio_success:
             downloaded += 1
-            print(f"Saved audio to {os.path.join('audio', audio_filename)}")
+            print(
+                f"Saved audio to {os.path.join('episodes', base_filename, audio_filename)}"
+            )
         else:
             failed += 1
         if desc_success:
-            print(f"Saved description to {os.path.join('description', desc_filename)}")
+            print(
+                f"Saved description to {os.path.join('episodes', base_filename, desc_filename)}"
+            )
 
     # Print summary
     print("\nDownload Summary:")
