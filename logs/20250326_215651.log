@@ -1,7 +1,0 @@
-2025-03-26 21:56:51,802 - INFO - 开始下载播客
-2025-03-26 21:56:51,802 - INFO - ==================================================
-2025-03-26 21:56:51,802 - INFO - 正在下载播客: Lex Fridman
-2025-03-26 21:56:51,802 - INFO - RSS 地址: https://lexfridman.com/feed/podcast/
-2025-03-26 21:56:51,802 - INFO - 限制: 最新 1 集
-2025-03-26 21:56:51,802 - INFO - ==================================================
-2025-03-26 21:56:51,802 - INFO - 执行命令: /Users/jason/miniconda3/envs/MyDrive/bin/python podcast_downloader.py https://lexfridman.com/feed/podcast/ -o downloads/Lex Fridman -l 1
