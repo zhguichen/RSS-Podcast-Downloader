@@ -1,0 +1,10 @@
+2025-03-26 22:14:08,975 - INFO - Starting podcast downloads
+2025-03-26 22:14:08,975 - INFO - ==================================================
+2025-03-26 22:14:08,975 - INFO - Downloading podcast: Lex Fridman
+2025-03-26 22:14:08,975 - INFO - RSS URL: https://lexfridman.com/feed/podcast/
+2025-03-26 22:14:08,975 - INFO - Limit: Latest 1 episodes
+2025-03-26 22:14:08,975 - INFO - ==================================================
+2025-03-26 22:14:08,975 - INFO - Executing command: /Users/jason/miniconda3/envs/MyDrive/bin/python podcast_downloader.py https://lexfridman.com/feed/podcast/ -o downloads/Lex Fridman -l 1
+2025-03-26 22:14:14,623 - INFO - Download successful: Lex Fridman
+2025-03-26 22:14:14,623 - INFO - All download tasks completed!
+2025-03-26 22:14:14,623 - INFO - Log file saved at: logs/20250326_221408.log

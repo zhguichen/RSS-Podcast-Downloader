@@ -1,0 +1,21 @@
+2025-03-26 22:15:35,117 - INFO - Starting podcast downloads
+2025-03-26 22:15:35,117 - INFO - ==================================================
+2025-03-26 22:15:35,117 - INFO - Downloading podcast: Lex Fridman
+2025-03-26 22:15:35,117 - INFO - RSS URL: https://lexfridman.com/feed/podcast/
+2025-03-26 22:15:35,117 - INFO - Limit: Latest 1 episodes
+2025-03-26 22:15:35,118 - INFO - ==================================================
+2025-03-26 22:15:35,118 - INFO - Executing command: /Users/jason/miniconda3/envs/MyDrive/bin/python podcast_downloader.py https://lexfridman.com/feed/podcast/ -o downloads/Lex Fridman -l 1
+2025-03-26 22:15:41,436 - INFO - Download successful: Lex Fridman
+2025-03-26 22:15:41,436 - INFO - ==================================================
+2025-03-26 22:15:41,436 - INFO - Downloading podcast: ZhiXing XiaoJiuGuan
+2025-03-26 22:15:41,436 - INFO - RSS URL: http://www.ximalaya.com/album/46199233.xml
+2025-03-26 22:15:41,436 - INFO - Limit: Latest 1 episodes
+2025-03-26 22:15:41,436 - INFO - ==================================================
+2025-03-26 22:15:41,436 - INFO - Executing command: /Users/jason/miniconda3/envs/MyDrive/bin/python podcast_downloader.py http://www.ximalaya.com/album/46199233.xml -o downloads/ZhiXing XiaoJiuGuan -l 1
+2025-03-26 22:15:50,039 - INFO - Download successful: ZhiXing XiaoJiuGuan
+2025-03-26 22:15:50,040 - INFO - ==================================================
+2025-03-26 22:15:50,040 - INFO - Downloading podcast: The Joe Rogan Experience
+2025-03-26 22:15:50,040 - INFO - RSS URL: https://feeds.megaphone.fm/GLT1412515089
+2025-03-26 22:15:50,040 - INFO - Limit: Latest 1 episodes
+2025-03-26 22:15:50,040 - INFO - ==================================================
+2025-03-26 22:15:50,040 - INFO - Executing command: /Users/jason/miniconda3/envs/MyDrive/bin/python podcast_downloader.py https://feeds.megaphone.fm/GLT1412515089 -o downloads/The Joe Rogan Experience -l 1

@@ -1,0 +1,23 @@
+2025-03-26 21:51:39,061 - INFO - 开始下载播客
+2025-03-26 21:51:39,061 - INFO - ==================================================
+2025-03-26 21:51:39,061 - INFO - 正在下载播客: 知行小酒馆
+2025-03-26 21:51:39,061 - INFO - RSS 地址: http://www.ximalaya.com/album/46199233.xml
+2025-03-26 21:51:39,061 - INFO - 限制: 最新 1 集
+2025-03-26 21:51:39,061 - INFO - ==================================================
+2025-03-26 21:51:39,061 - INFO - 执行命令: /Users/jason/miniconda3/envs/MyDrive/bin/python podcast_downloader.py http://www.ximalaya.com/album/46199233.xml -o downloads/知行小酒馆 -l 1
+2025-03-26 21:51:47,069 - INFO - 下载成功: 知行小酒馆
+2025-03-26 21:51:47,069 - INFO - 输出信息: Parsing RSS feed: http://www.ximalaya.com/album/46199233.xml
+Podcast: 知行小酒馆｜关注投资理财，更关注怎样更好地生活
+Saved podcast information to downloads/知行小酒馆/description/podcast_info.json
+Downloading entry 1: E182 打工22年后，我发现，原来休憩与奔跑一样重要
+Saved audio to audio/E182 打工22年后，我发现，原来休憩与奔跑一样重要.m4a
+Saved description to description/E182 打工22年后，我发现，原来休憩与奔跑一样重要.json
+
+Download Summary:
+Total entries: 1
+Successfully downloaded: 1
+Skipped: 0
+Failed: 0
+
+2025-03-26 21:51:47,069 - INFO - 所有下载任务完成!
+2025-03-26 21:51:47,069 - INFO - 日志文件保存在: logs/20250326_215139.log

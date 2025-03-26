@@ -1,0 +1,31 @@
+2025-03-26 22:19:12,788 - INFO - Starting podcast downloads
+2025-03-26 22:19:12,788 - INFO - ==================================================
+2025-03-26 22:19:12,788 - INFO - Downloading podcast: Lex Fridman
+2025-03-26 22:19:12,788 - INFO - RSS URL: https://lexfridman.com/feed/podcast/
+2025-03-26 22:19:12,788 - INFO - Limit: Latest 10 episodes
+2025-03-26 22:19:12,788 - INFO - ==================================================
+2025-03-26 22:19:12,788 - INFO - Executing command: /Users/jason/miniconda3/envs/MyDrive/bin/python podcast_downloader.py https://lexfridman.com/feed/podcast/ -o /root/mydrive/podcasts/Lex Fridman -l 10
+2025-03-26 22:19:12,958 - ERROR - Download failed: Lex Fridman, exit code: 1
+2025-03-26 22:19:12,958 - INFO - ==================================================
+2025-03-26 22:19:12,958 - INFO - Downloading podcast: 知行小酒馆
+2025-03-26 22:19:12,958 - INFO - RSS URL: http://www.ximalaya.com/album/46199233.xml
+2025-03-26 22:19:12,958 - INFO - Limit: Latest 10 episodes
+2025-03-26 22:19:12,958 - INFO - ==================================================
+2025-03-26 22:19:12,958 - INFO - Executing command: /Users/jason/miniconda3/envs/MyDrive/bin/python podcast_downloader.py http://www.ximalaya.com/album/46199233.xml -o /root/mydrive/podcasts/知行小酒馆 -l 10
+2025-03-26 22:19:13,048 - ERROR - Download failed: 知行小酒馆, exit code: 1
+2025-03-26 22:19:13,048 - INFO - ==================================================
+2025-03-26 22:19:13,048 - INFO - Downloading podcast: The Joe Rogan Experience
+2025-03-26 22:19:13,048 - INFO - RSS URL: https://feeds.megaphone.fm/GLT1412515089
+2025-03-26 22:19:13,048 - INFO - Limit: Latest 10 episodes
+2025-03-26 22:19:13,048 - INFO - ==================================================
+2025-03-26 22:19:13,048 - INFO - Executing command: /Users/jason/miniconda3/envs/MyDrive/bin/python podcast_downloader.py https://feeds.megaphone.fm/GLT1412515089 -o /root/mydrive/podcasts/The Joe Rogan Experience -l 10
+2025-03-26 22:19:13,146 - ERROR - Download failed: The Joe Rogan Experience, exit code: 1
+2025-03-26 22:19:13,146 - INFO - ==================================================
+2025-03-26 22:19:13,146 - INFO - Downloading podcast: 后互联网时代的乱弹
+2025-03-26 22:19:13,146 - INFO - RSS URL: https://proxy.wavpub.com/pie.xml
+2025-03-26 22:19:13,146 - INFO - Limit: Latest 10 episodes
+2025-03-26 22:19:13,146 - INFO - ==================================================
+2025-03-26 22:19:13,147 - INFO - Executing command: /Users/jason/miniconda3/envs/MyDrive/bin/python podcast_downloader.py https://proxy.wavpub.com/pie.xml -o /root/mydrive/podcasts/后互联网时代的乱弹 -l 10
+2025-03-26 22:19:13,239 - ERROR - Download failed: 后互联网时代的乱弹, exit code: 1
+2025-03-26 22:19:13,239 - INFO - All download tasks completed!
+2025-03-26 22:19:13,239 - INFO - Log file saved at: logs/20250326_221912.log
