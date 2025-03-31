@@ -247,11 +247,11 @@ def parse_rss_feed(feed_url, output_dir, limit=None, skip_existing=True):
         os.makedirs(episode_dir, exist_ok=True)
 
         # Create audio filename
-        audio_filename = f"audio{extension}"
+        audio_filename = f"{base_filename}{extension}"
         audio_path = os.path.join(episode_dir, audio_filename)
 
         # Create description filename
-        desc_filename = "info.json"
+        desc_filename = f"{base_filename}.json"
         desc_path = os.path.join(episode_dir, desc_filename)
 
         # Check if episode already exists

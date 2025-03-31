@@ -36,25 +36,25 @@ def setup_logging():
 
 # Define some popular podcasts RSS feeds
 PODCASTS = [
-    {
-        "name": "Lex Fridman",
-        "rss": "https://lexfridman.com/feed/podcast/",
-        "limit": 10,  # Only download the latest episode
-    },
-    {
-        "name": "知行小酒馆",
-        "rss": "http://www.ximalaya.com/album/46199233.xml",
-        "limit": 10,
-    },
-    {
-        "name": "The Joe Rogan Experience",
-        "rss": "https://feeds.megaphone.fm/GLT1412515089",
-        "limit": 10,
-    },
+    # {
+    #     "name": "Lex Fridman",
+    #     "rss": "https://lexfridman.com/feed/podcast/",
+    #     "limit": 10,  # Only download the latest episode
+    # },
+    # {
+    #     "name": "知行小酒馆",
+    #     "rss": "http://www.ximalaya.com/album/46199233.xml",
+    #     "limit": 10,
+    # },
+    # {
+    #     "name": "The Joe Rogan Experience",
+    #     "rss": "https://feeds.megaphone.fm/GLT1412515089",
+    #     "limit": 10,
+    # },
     {
         "name": "后互联网时代的乱弹",
         "rss": "https://proxy.wavpub.com/pie.xml",
-        "limit": 10,
+        "limit": 5,
     },
 ]
 
@@ -82,8 +82,8 @@ def main():
         logging.info(f"{'=' * 50}")
 
         # Create output directory
-        output_dir = os.path.join("/root/mydrive/podcasts", name)
-        # output_dir = os.path.join("downloads", name)
+        # output_dir = os.path.join("/root/mydrive/podcasts", name)
+        output_dir = os.path.join("downloads", name)
         # Call podcast_downloader.py
         cmd = [
             sys.executable,
