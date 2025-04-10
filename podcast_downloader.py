@@ -17,7 +17,7 @@ import hashlib
 def sanitize_filename(filename):
     """Clean filename by removing illegal characters"""
     # Replace characters not allowed in Windows and Unix filenames
-    return re.sub(r'[\\/*?:"<>|]', "_", filename)
+    return re.sub(r'[\\/*?:"<>|#%&{}()@]', "_", filename)
 
 
 def download_file(url, output_path):

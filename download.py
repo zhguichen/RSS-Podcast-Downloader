@@ -36,26 +36,26 @@ def setup_logging():
 
 # Define some popular podcasts RSS feeds
 PODCASTS = [
-    # {
-    #     "name": "Lex Fridman",
-    #     "rss": "https://lexfridman.com/feed/podcast/",
-    #     "limit": 10,  # Only download the latest episode
-    # },
+    {
+        "name": "Lex Fridman",
+        "rss": "https://lexfridman.com/feed/podcast/",
+        "limit": 1,  # Only download the latest episode
+    },
     # {
     #     "name": "知行小酒馆",
     #     "rss": "http://www.ximalaya.com/album/46199233.xml",
     #     "limit": 10,
     # },
-    # {
-    #     "name": "The Joe Rogan Experience",
-    #     "rss": "https://feeds.megaphone.fm/GLT1412515089",
-    #     "limit": 10,
-    # },
     {
-        "name": "后互联网时代的乱弹",
-        "rss": "https://proxy.wavpub.com/pie.xml",
-        "limit": 5,
+        "name": "The Joe Rogan Experience",
+        "rss": "https://feeds.megaphone.fm/GLT1412515089",
+        "limit": 1,
     },
+    # {
+    #     "name": "后互联网时代的乱弹",
+    #     "rss": "https://proxy.wavpub.com/pie.xml",
+    #     "limit": 1,
+    # },
 ]
 
 
