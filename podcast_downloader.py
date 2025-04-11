@@ -12,6 +12,7 @@ import json
 from urllib.parse import urlparse
 import time
 import hashlib
+import subprocess
 
 
 def sanitize_filename(filename):
@@ -214,6 +215,7 @@ def parse_rss_feed(feed_url, output_dir, limit=None, skip_existing=True):
     downloaded = 0
     skipped = 0
     failed = 0
+    transcoded = 0
 
     for i, entry in enumerate(entries):
         # Try to get audio URL
@@ -231,14 +233,6 @@ def parse_rss_feed(feed_url, output_dir, limit=None, skip_existing=True):
         # Get title and publication date
         title = entry.get("title", f"episode_{i + 1}")
 
-        # Determine file extension
-        parsed_url = urlparse(audio_url)
-        path = parsed_url.path
-        extension = os.path.splitext(path)[1]
-        if not extension:
-            # If no extension in URL, default to .mp3
-            extension = ".mp3"
-
         # Create base filename (without extension)
         base_filename = sanitize_filename(f"{title}")
 
@@ -246,8 +240,8 @@ def parse_rss_feed(feed_url, output_dir, limit=None, skip_existing=True):
         episode_dir = os.path.join(episodes_dir, base_filename)
         os.makedirs(episode_dir, exist_ok=True)
 
-        # Create audio filename
-        audio_filename = f"{base_filename}{extension}"
+        # Create audio filename (always use .m4a extension)
+        audio_filename = f"{base_filename}.m4a"
         audio_path = os.path.join(episode_dir, audio_filename)
 
         # Create description filename
@@ -262,20 +256,50 @@ def parse_rss_feed(feed_url, output_dir, limit=None, skip_existing=True):
             skipped += 1
             continue
 
-        # Download audio file
+        # Download audio file to temporary location
+        temp_path = os.path.join(episode_dir, "temp_download")
         print(f"Downloading entry {i + 1}: {title}")
-        audio_success = download_file(audio_url, audio_path)
+        audio_success = download_file(audio_url, temp_path)
 
         # Save description
         desc_success = save_description(entry, desc_path)
 
         if audio_success:
-            downloaded += 1
-            print(
-                f"Saved audio to {os.path.join('episodes', base_filename, audio_filename)}"
-            )
+            # Transcode to AAC
+            try:
+                print(f"Converting to AAC: {base_filename}")
+                command = [
+                    "ffmpeg",
+                    "-i",
+                    temp_path,
+                    "-c:a",
+                    "aac",
+                    "-b:a",
+                    "128k",
+                    "-y",
+                    audio_path,
+                ]
+                result = subprocess.run(
+                    command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+                )
+
+                if result.returncode == 0:
+                    downloaded += 1
+                    transcoded += 1
+                    print(f"Successfully converted and saved to: {audio_path}")
+                else:
+                    print(f"Conversion failed: {result.stderr}")
+                    failed += 1
+            except Exception as e:
+                print(f"Conversion error: {e}")
+                failed += 1
+            finally:
+                # Clean up temporary file
+                if os.path.exists(temp_path):
+                    os.remove(temp_path)
         else:
             failed += 1
+
         if desc_success:
             print(
                 f"Saved description to {os.path.join('episodes', base_filename, desc_filename)}"
@@ -284,14 +308,14 @@ def parse_rss_feed(feed_url, output_dir, limit=None, skip_existing=True):
     # Print summary
     print("\nDownload Summary:")
     print(f"Total entries: {len(entries)}")
-    print(f"Successfully downloaded: {downloaded}")
+    print(f"Successfully downloaded and converted: {downloaded}")
     print(f"Skipped: {skipped}")
     print(f"Failed: {failed}")
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Download podcast audio from RSS feeds"
+        description="Download podcast audio from RSS feeds and convert to AAC format"
     )
     parser.add_argument("feed_url", help="RSS feed URL")
     parser.add_argument(

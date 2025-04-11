@@ -39,7 +39,7 @@ PODCASTS = [
     {
         "name": "Lex Fridman",
         "rss": "https://lexfridman.com/feed/podcast/",
-        "limit": 1,  # Only download the latest episode
+        "limit": 2,  # Only download the latest episode
     },
     # {
     #     "name": "知行小酒馆",
@@ -49,13 +49,13 @@ PODCASTS = [
     {
         "name": "The Joe Rogan Experience",
         "rss": "https://feeds.megaphone.fm/GLT1412515089",
-        "limit": 1,
+        "limit": 2,
     },
-    # {
-    #     "name": "后互联网时代的乱弹",
-    #     "rss": "https://proxy.wavpub.com/pie.xml",
-    #     "limit": 1,
-    # },
+    {
+        "name": "后互联网时代的乱弹",
+        "rss": "https://proxy.wavpub.com/pie.xml",
+        "limit": 2,
+    },
 ]
 
 
